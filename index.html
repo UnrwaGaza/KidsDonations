@@ -382,6 +382,49 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
+    /* Navigation menu styles */
+    .main-nav {
+        background-color: #004080;
+        padding: 10px 0;
+    }
+
+    .main-nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-nav li {
+        margin: 0 15px;
+    }
+
+    .main-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+        color: #ffd700;
+    }
+
+    .content-section {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .content-section h2 {
+        color: #005a9c;
+        margin-bottom: 20px;
+    }
+
     @media (max-width: 768px) {
         .container {
             padding: 10px;
@@ -390,6 +433,15 @@
         .main-title {
             font-size: 2.5rem;
             padding: 20px 0;
+        }
+
+        .main-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-nav li {
+            margin: 5px 0;
         }
 
         .header-content {
@@ -436,6 +488,14 @@
 </head>
 <body>
     <h1 class="main-title">Free the Kids of Gaza</h1>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#learn-more">Learn More</a></li>
+            <li><a href="#crypto-payment">How to pay with Crypto</a></li>
+        </ul>
+    </nav>
 
     <header>
         <div class="container">
@@ -547,6 +607,27 @@
             <h2>Recent Donations</h2>
             <div id="donationList"></div>
         </section>
+        
+        <section id="about" class="content-section">
+            <h2>About Us</h2>
+            <p>UNRWA (United Nations Relief and Works Agency for Palestine Refugees in the Near East) is a UN agency that supports the relief and human development of Palestinian refugees. Our mission is to help Palestine refugees achieve their full potential in human development under the difficult circumstances in which they live.</p>
+        </section>
+
+        <section id="learn-more" class="content-section">
+            <h2>Learn More</h2>
+            <p>The ongoing crisis in Gaza has severely impacted the lives of countless children. Learn about the challenges they face and how your support can make a difference in areas such as education, healthcare, and emergency relief.</p>
+        </section>
+
+        <section id="crypto-payment" class="content-section">
+            <h2>How to pay with Crypto</h2>
+            <p>Cryptocurrency donations provide a fast and secure way to support our mission. Follow these steps to make a crypto donation:</p>
+            <ol>
+                <li>Choose the cryptocurrency you wish to donate (Bitcoin, Ethereum, or USDT).</li>
+                <li>Copy the corresponding wallet address provided on this page.</li>
+                <li>Use your preferred crypto wallet or exchange to send the desired amount to the copied address.</li>
+                <li>Once the transaction is confirmed, your donation will be received and put to use helping the children of Gaza.</li>
+            </ol>
+        </section>
     </main>
 
     <footer>
@@ -633,6 +714,16 @@
             e.preventDefault();
             alert('Thank you for your message. UNRWA will contact you soon.');
             this.reset();
+        });
+
+        document.querySelectorAll('.main-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
